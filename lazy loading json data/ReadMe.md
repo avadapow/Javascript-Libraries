@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="./lazyload.js"></script>
 ```
-> In the nex step create an element inside a lazy container and add the values you want to show in two qurly brackets like bellow
+> In the next step create an element inside a lazy container and add the values you want to show in two qurly brackets like bellow
 
 ```html
 <div id="lazy-container">
