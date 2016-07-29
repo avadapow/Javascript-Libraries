@@ -5,15 +5,15 @@
 *	@id_to_append_elements: container for the appended elements
 *	@message_to_show_in_the_end: the message you want the user to see in the end
 */
-function lazyload(url, item_to_append, id_to_append_elements, message_to_show_in_the_end){
+function avadapow_lazyload(url, item_to_append, id_to_append_elements, message_to_show_in_the_end){
 	var item = $(item_to_append).html();
 	$(item_to_append).remove();
 	var matches = item.match(/\{\{([^}]+)\}\}/g);
-
+	// Searches for elements inside {{element}}
 	var json_result =  null;
 	$.ajax({async: false,cache: false,url: url, success: function(result){
         json_result = result;
-    }});
+    }}); // making ajax request to json data
 
     var items_array = new Array();
 	for(j in json_result){
@@ -32,12 +32,12 @@ function lazyload(url, item_to_append, id_to_append_elements, message_to_show_in
 	var total_products = items_array.length;
     var last_index = 0;
     var reached_the_end = 0;
-    while( last_index < 10){
+    while( last_index < 10){//pasting first 10 elements
     	$(id_to_append_elements).append(items_array[last_index]).show('slow');
 	 	last_index++;
     }
     $(window).scroll(function() {
-     if($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
+     if($(window).scrollTop() + $(window).height() > $(document).height() - 800) { // lazy loading json data
        if(last_index < (total_products)){
 		 $(id_to_append_elements).append(items_array[last_index]).show('slow');
 		 last_index++;
